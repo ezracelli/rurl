@@ -1,0 +1,18 @@
+[package]
+name = "rurl"
+version = "0.1.0"
+authors = ["ezra"]
+edition = "2018"
+
+[dependencies]
+anyhow = "1.0"
+hyper = "0.13"
+json = "0.12"
+lazy_static = "1.4"
+mime = { path = "../mime" }
+onig = "6.0"
+structopt = { version = "0.3", default-features = false }
+syntect = "4.2"
+thiserror = "1.0"
+tokio = { version = "0.2", features = ["full"] }
+urlencoding = "1.1"

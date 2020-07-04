@@ -1,0 +1,27 @@
+%YAML 1.2
+---
+# See http://www.sublimetext.com/docs/3/syntax.html
+scope: source.http-response
+name: HTTP Response
+file_extensions:
+  - http
+variables:
+  content_type_sep: (?=;|$)
+contexts:
+  main:
+    - match: ''
+      push:
+        - meta_content_scope: source.python
+        - include: scope:source.python
+        - match: $\n
+          set: http-headers
+
+  http-headers:
+    - meta_content_scope: meta.response-headers.http-response
+    - match: ([^:]+)(:)\s*(.*$)
+      captures:
+        1: keyword.other.http-header.key.http-response
+        2: punctuation.separator.key-value.http-response
+        3: string.unquoted.http-header.value.http-response
+    - match: ^$\n
+      set: scope:text.plain
